@@ -21,3 +21,11 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+
+tr, td{
+  border: 1px black solid;
+  text-align: center;
+}
+
+tr:nth-child(even){background-color: #f2f2f2;}

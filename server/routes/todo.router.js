@@ -16,7 +16,20 @@ router.get('/', (req, res) => {
 })
 
 // POST
+router.post('/', (req, res) => {
+    const todo = req.body;
+    const queryText = `INSERT INTO "todo" ("todo") VALUES ($1)`;
 
+    pool.query(queryText, [todo.todo])
+        .then((result) => {
+            console.log('Added to todo list', todo)
+            res.sendStatus(201);
+        })
+        .catch((error) => {
+            console.log('Error in POST /todo', error)
+            res.sendStatus(500);
+        })
+})
 // PUT
 
 // DELETE
