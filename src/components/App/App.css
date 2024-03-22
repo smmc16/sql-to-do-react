@@ -25,6 +25,8 @@
 table {
   width: 50%;
   border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 tr, th, td{
@@ -33,3 +35,7 @@ tr, th, td{
 }
 
 tr:nth-child(even){background-color: #f2f2f2;}
+
+#fullPage {
+  text-align: center;
+}

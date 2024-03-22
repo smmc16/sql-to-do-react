@@ -35,7 +35,7 @@ function App () {
   }
 
   return (
-    <div>
+    <div id="fullPage">
     <div>
       <h1>TO DO APP</h1>
     </div>
