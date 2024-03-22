@@ -27,6 +27,7 @@ function App () {
     const data = {todo: todo}
     axios.post('/api/todo', data).then((response) => {
       getList();
+      setTodo('');
     }).catch((error) => {
       console.log('Error in POST', error);
       alert('Something went wrong')
@@ -34,22 +35,30 @@ function App () {
   }
 
   return (
-    <><div>
+    <div>
+    <div>
       <h1>TO DO APP</h1>
-    </div><div>
+    </div>
         <form onSubmit={sendToServer}>
-          Enter here: <input type="text" onChange={(e) => setTodo(e.target.value)}></input>
+          Enter here: <input type="text" value={todo} onChange={(e) => setTodo(e.target.value)}></input>
           <input type="submit"></input>
         </form>
         <h2>To do list:</h2>
+        <table>
+          <tbody>
         {
           todoList.map((todoItem) => {
             return <tr key={todoItem.id}>
-              <td>{todoItem.id}</td> <td>{todoItem.todo}</td>
-            </tr>
+                <td>{todoItem.id}</td><td>{todoItem.todo}</td>
+              </tr>
+            
           })
+          
         }
-      </div></>
+          </tbody>
+        </table>
+        
+    </div>
   );
 
 }

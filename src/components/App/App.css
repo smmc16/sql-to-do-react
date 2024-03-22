@@ -22,8 +22,12 @@
   to { transform: rotate(360deg); }
 }
 
+table {
+  width: 50%;
+  border-collapse: collapse;
+}
 
-tr, td{
+tr, th, td{
   border: 1px black solid;
   text-align: center;
 }
