@@ -56,11 +56,21 @@ function App () {
           <tbody>
         {
           todoList.map((todoItem) => {
+            if (todoItem.complete === true) {
+              return <tr key={todoItem.id}>
+                  <td>{todoItem.id}</td><td>{todoItem.todo}</td>
+                  <td></td>
+                  <td><button>Delete</button></td>
+                </tr>
+              };
+
+            if (todoItem.complete === false) {
             return <tr key={todoItem.id}>
                 <td>{todoItem.id}</td><td>{todoItem.todo}</td>
                 <td><button>Complete?</button></td>
                 <td><button>Delete</button></td>
               </tr>
+            }
             
           })
           
