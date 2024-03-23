@@ -32,7 +32,22 @@ router.post('/', (req, res) => {
 })
 // PUT
 
+router.put('/:id', (req, res) => {
+    const queryText = `
+        UPDATE "todo" SET "complete" = true
+        WHERE "id" = $1;
+    `;
 
+    pool.query(queryText, [req.params.id])
+        .then((result) => {
+            console.log('Updated todo list')
+            res.sendStatus(201);
+        })
+        .catch((error) => {
+            console.log('Error in PUT /todo', error)
+            res.sendStatus(500);
+        })
+})
 
 // DELETE
 
