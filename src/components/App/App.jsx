@@ -13,7 +13,7 @@ function App () {
 
   const getList = () => {
     axios.get('/api/todo').then((response) => {
-      setTodoList(response.data);
+      setTodoList(response.data); 
     }).catch((error) => {
       console.log('error in GET', error);
       alert('Something went wrong');
@@ -34,6 +34,14 @@ function App () {
     })
   }
 
+  const markComplete = (todoId) => {
+    
+  }
+
+  const deleteItem = (todoId) => {
+   
+  }
+
   return (
     <div id="fullPage">
     <div>
@@ -50,6 +58,8 @@ function App () {
           todoList.map((todoItem) => {
             return <tr key={todoItem.id}>
                 <td>{todoItem.id}</td><td>{todoItem.todo}</td>
+                <td><button>Complete?</button></td>
+                <td><button>Delete</button></td>
               </tr>
             
           })
