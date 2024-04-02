@@ -30,3 +30,24 @@ table {
 }
 
 
+
+#fullPage {
+  text-align: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  background-color: #69c3ff;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  border: solid white 5px;
+  border-radius: 20px;
+  margin: 20px;
+}
+
+.complete {
+  background-color: aquamarine;
+}
+
+.incomplete {
+  background-color: pink;
+}
+
