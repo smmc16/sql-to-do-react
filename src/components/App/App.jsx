@@ -1,10 +1,11 @@
 import './App.css';
 import {useState, useEffect} from 'react';
 import axios from 'axios';
+import TodoForm from './TodoForm/TodoForm';
 
 function App () {
   
-  const [todo, setTodo] = useState('');
+  
   const [todoList, setTodoList] = useState([]);
 
   useEffect(() => {
@@ -21,18 +22,7 @@ function App () {
 
   }
 
-  const sendToServer = (e) => {
-    e.preventDefault();
-    console.log('todo', todo)
-    const data = {todo: todo}
-    axios.post('/api/todo', data).then((response) => {
-      getList();
-      setTodo('');
-    }).catch((error) => {
-      console.log('Error in POST', error);
-      alert('Something went wrong')
-    })
-  }
+  
 
   const markComplete = (todoId) => {
     axios.put(`/api/todo/${todoId}`).then((response) => {
@@ -57,11 +47,7 @@ function App () {
     <header>
       <h1>TO DO APP</h1>
     </header>
-      
-        <form onSubmit={sendToServer}>
-          Enter here: <input type="text" value={todo} onChange={(e) => setTodo(e.target.value)}></input>
-          <input type="submit"></input>
-        </form>
+        <TodoForm getList={getList}/>
         <h2>To do list:</h2>
         <table>
           <tbody>
