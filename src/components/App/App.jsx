@@ -35,18 +35,29 @@ function App () {
   }
 
   const markComplete = (todoId) => {
-    
+    axios.put(`/api/todo/${todoId}`).then((response) => {
+      getList();
+    }).catch((error) => {
+      console.log(error);
+      alert('Something went wrong')
+    })
   }
 
   const deleteItem = (todoId) => {
-   
+    axios.delete(`/api/todo/${todoId}`).then((response) => {
+      getList();
+    }).catch((error) => {
+      console.log(error);
+      alert('Something went wrong')
+    })
   }
 
   return (
     <div id="fullPage">
-    <div>
+    <header>
       <h1>TO DO APP</h1>
-    </div>
+    </header>
+      
         <form onSubmit={sendToServer}>
           Enter here: <input type="text" value={todo} onChange={(e) => setTodo(e.target.value)}></input>
           <input type="submit"></input>
@@ -57,18 +68,18 @@ function App () {
         {
           todoList.map((todoItem) => {
             if (todoItem.complete === true) {
-              return <tr key={todoItem.id}>
+              return <tr key={todoItem.id} className="complete">
                   <td>{todoItem.id}</td><td>{todoItem.todo}</td>
-                  <td></td>
-                  <td><button>Delete</button></td>
+                  <td>Complete!</td>
+                  <td><button onClick={() => deleteItem(todoItem.id)}>Delete</button></td>
                 </tr>
               };
 
             if (todoItem.complete === false) {
-            return <tr key={todoItem.id}>
+            return <tr key={todoItem.id} className="incomplete">
                 <td>{todoItem.id}</td><td>{todoItem.todo}</td>
-                <td><button>Complete?</button></td>
-                <td><button>Delete</button></td>
+                <td><button onClick={() => markComplete(todoItem.id)}>Complete?</button></td>
+                <td><button onClick={() => deleteItem(todoItem.id)}>Delete</button></td>
               </tr>
             }
             

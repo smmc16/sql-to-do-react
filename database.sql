@@ -1,7 +1,7 @@
 CREATE TABLE "todo" (
   "id" serial primary key,
   "todo" varchar(200),
-  "complete" boolean
+  "complete" boolean default false
 );
 
 INSERT INTO "todo" 
